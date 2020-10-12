@@ -1,0 +1,6 @@
+module Pods_voozoo {
+  umbrella header "Pods-voozoo-umbrella.h"
+
+  export *
+  module * { export * }
+}

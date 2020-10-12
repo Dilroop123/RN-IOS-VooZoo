@@ -1,0 +1,6 @@
+module Pods_voozoo_voozooTests {
+  umbrella header "Pods-voozoo-voozooTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
