@@ -21,7 +21,7 @@ export const addSocialShare = (userId, itemCategoryId) => {
         });
 
         const resData = await response.json();
-        //console.log(resData);
+
 
         dispatch({
             type: ADD_SOCIALSHARE, userdata: resData
@@ -47,7 +47,7 @@ export const ViewSocailShare = (userId) => {
         });
 
         const resData = await response.json();
-        //console.log(resData);
+
 
         dispatch({
             type: SET_SOCAILSHARE, socialShare: resData
@@ -72,8 +72,7 @@ export const RemoveWishList = (userId, itemCatId) => {
             })
         });
 
-        //  const resData = await response.json();
-        //console.log(resData);
+
 
         dispatch({
             type: REMOVE_LIST, wishData: 'resData'

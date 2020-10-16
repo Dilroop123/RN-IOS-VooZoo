@@ -13,7 +13,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 const ShopingList = React.memo(({ navigation, navigateTo, catdata }) => {
 
 
-
+    console.log(catdata[0])
 
 
 
@@ -22,13 +22,13 @@ const ShopingList = React.memo(({ navigation, navigateTo, catdata }) => {
             <Card containerStyle={styles.cardcontainer}>
 
 
-                <View style={{ height: hp('20.5%') }}>
+                <View style={{ height: hp('17.5%') }}>
                     <Image style={styles.imagestyle} source={{ uri: baseUrl.url + 'api/download?privateUrl=' + item.image }} />
                 </View>
 
-                <View style={{ alignItems: 'center' }}>
-                    <Text>{item.name}</Text>
-                    <Text>999</Text>
+                <View style={{}}>
+                    <Text style={{ textAlign: 'center' }}>{item.name}</Text>
+                    <Text style={{ textAlign: 'center', color: color.blue }}>{item.count}</Text>
                 </View>
 
 

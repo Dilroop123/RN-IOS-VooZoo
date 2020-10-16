@@ -34,7 +34,7 @@ export default (state = initialState, action) => {
             }
 
         case SET_BATCHICON:
-            //  console.log(action.batic);
+
             return {
                 ...state, BatchIcon: action.batic
             }

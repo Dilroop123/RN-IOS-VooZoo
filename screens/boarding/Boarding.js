@@ -23,7 +23,7 @@ const Boarding = ({ navigation }) => {
     try {
       phoneNumber = await SmsRetriever.requestPhoneNumber();
     } catch (error) {
-      console.log(JSON.stringify(error));
+
 
       Alert.alert(
         "Phone",
@@ -39,7 +39,7 @@ const Boarding = ({ navigation }) => {
         { cancelable: false }
       );
     }
-    //console.log(phoneNumber);
+
 
     if (phoneNumber != '' && phoneNumber != undefined && phoneNumber != null) {
       dispatch(UserAction.GenerateOtp(phoneNumber));
@@ -53,7 +53,7 @@ const Boarding = ({ navigation }) => {
     }
 
     // let code = await RNOtpVerify.getHash();
-    // console.log(code);
+
   }
 
 

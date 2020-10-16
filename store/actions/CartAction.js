@@ -31,7 +31,7 @@ export const CreateCart = (PID, UId, SizeNumber, QuantityNumber, pay, ProductPri
         });
 
         const resData = await response.json();
-        //  console.log(resData.cartData.length);
+
 
         dispatch({
             type: SET_BATCHICON, batic: resData.cartData.length
@@ -116,7 +116,7 @@ export const updateCart = (id, quantity) => {
 
 export const deleteCart = (id, userId) => {
 
-    // console.log(id);
+
     return async dispatch => {
         const response = await fetch(baseUrl.url + 'api/v1/carts/delete', {
             method: 'DELETE',
@@ -133,7 +133,7 @@ export const deleteCart = (id, userId) => {
 
         const cartdata = await response.json();
 
-        console.log(response)
+
 
 
 
@@ -149,7 +149,7 @@ export const clearReduxCart = () => {
 
 export const ClearCart = (id) => {
 
-    // console.log(id);
+
     return async dispatch => {
         const response = await fetch(baseUrl.url + 'api/v1/carts/clearCart', {
             method: 'DELETE',
@@ -165,7 +165,7 @@ export const ClearCart = (id) => {
 
         const resData = await response.json();
 
-        console.log(resData);
+
 
 
 

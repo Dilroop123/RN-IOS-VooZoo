@@ -21,6 +21,7 @@ import ProductDetailCard from './ProductDetailCard';
 import ProductSoldByCard from './ProductSoldByCard';
 import ProductCatalogReviews from '../../../components/ProductCatalogReviews';
 import BlankReviewTemplate from '../../../components/BlankReviewTemplate';
+import { HeaderBackButton } from '@react-navigation/stack';
 
 
 
@@ -91,7 +92,19 @@ const ProductDetail = ({ navigation, route }) => {
                             onPress={() => navigation.navigate('Cart')} />
                     </View>
                 </View>
-            ),
+            ), headerLeft: () => (
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                    <HeaderBackButton onPress={() => moveBack()} />
+                    <Iconic
+                        style={{ paddingRight: wp('17.5%') }}
+                        name='home-outline'
+                        type='font-awesome'
+                        size={23}
+                        color='black'
+
+                        onPress={() => navigation.navigate('Home')} />
+                </View>
+            )
 
         });
     }, [navigation, batchicon]);
@@ -146,6 +159,12 @@ const ProductDetail = ({ navigation, route }) => {
         () => {
             setShowSize(true)
         }, []);
+
+    const moveBack = () => {
+
+        navigation.pop();
+
+    }
 
     return (
         <View>
@@ -207,10 +226,10 @@ const ProductDetail = ({ navigation, route }) => {
                             <Text style={{ color: color.blue, marginLeft: wp('1.5%') }}>ADD TO CART</Text>
                         </View>
                     </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback onPress={() => toogleShareModal(item.productimages, item.description, item.itemCategoryId)}>
+                    <TouchableWithoutFeedback onPress={() => navigation.navigate('Cart')}>
                         <View style={{ flexDirection: 'row', paddingVertical: hp('1.2%'), flex: 1, backgroundColor: color.blue, alignItems: 'center', justifyContent: 'center' }}>
                             <Icon name="share-variant" size={20} color='#fff' />
-                            <Text style={{ color: '#fff', marginLeft: wp('1.5%') }}>SHARE NOW</Text>
+                            <Text style={{ color: '#fff', marginLeft: wp('1.5%') }}>CHECK OUT</Text>
 
                         </View>
                     </TouchableWithoutFeedback>

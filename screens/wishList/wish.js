@@ -74,7 +74,7 @@ const Wish = ({ navigation, route }) => {
     }, []);
 
     const navigateToScreen = (item) => {
-        //  console.log(item);
+
         navigation.navigate('ProductList', { catId: item.itemCategoryId.categoryId, subCatId: item.itemCategoryId.subCategoryId, itemCatId: item.itemCategoryId._id, screenTitle: item.itemCategoryId.name, addOnPrice: item.itemCategoryId.addOnPrice, gstPercent: item.itemCategoryId.gstPercent, voozooProfit: item.itemCategoryId.voozooProfit, discount: item.itemCategoryId.discount, cod: item.itemCategoryId.cod });
     }
     return (

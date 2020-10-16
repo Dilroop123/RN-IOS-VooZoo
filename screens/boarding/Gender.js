@@ -30,14 +30,14 @@ const Gender = React.memo(({ navigation }) => {
 
 
     const handleFemale = useCallback(() => {
-        console.log('handle female');
+
         setFemale(true);
         setMale(false);
     }, []);
 
 
     const handleMale = () => {
-        console.log('handle male');
+
         setFemale(false);
         setMale(true);
 

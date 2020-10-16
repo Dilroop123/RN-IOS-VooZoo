@@ -13,11 +13,15 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import CartPaymentCard from './CartPaymentCard';
 import CartProductCharges from '../../components/CartProductCharges';
 import CartSuplierCard from './CartSuplierCard';
+import EmptyState from '../../components/EmptyState';
 
 const Cart = ({ navigation }) => {
 
     const userdata = useSelector(state => state.user.UserData);
     const cartData = useSelector(state => state.cart.CartData);
+    const batchicon = useSelector(state => state.cart.BatchIcon);
+
+
 
     var orderTotal = 0;
     const [online, setOnline] = useState(false);
@@ -26,8 +30,7 @@ const Cart = ({ navigation }) => {
     const [cashOnDelivery, setCashOnDelibery] = useState(false);
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     console.log('in outer loop')
+
     for (var key in cartData) {
 
         orderTotal = orderTotal + (cartData[key].ProductPrice * cartData[key].Quantity);
@@ -38,7 +41,7 @@ const Cart = ({ navigation }) => {
 
 
         if (orderFinal == 0) {
-            // console.log(cartData.length)
+
             setOrderFinal(orderTotal);
         }
     }
@@ -118,27 +121,44 @@ const Cart = ({ navigation }) => {
 
     return (
         <View style={{ flex: 1 }}>
-            <ScrollView alwaysBounceVertical={true}
-                showsVerticalScrollIndicator={false}
+
+            {batchicon == 0 ?
+
+                <EmptyState
+                    showIcon
+                    iconName='cart-remove'
+
+                    title="Your Cart is Empty"
+                    message="Looks like you haven't added anything to your cart yet"
+                />
+                :
+                <ScrollView alwaysBounceVertical={true}
+                    showsVerticalScrollIndicator={false}
 
 
-            >
-                <View style={styles.container}>
-                    <View style={styles.paymentContainer}>
-                        <Text>SELECT PAYMENT METHOD</Text>
+                >
+                    <View style={styles.container}>
+                        <View style={styles.paymentContainer}>
+                            <Text>SELECT PAYMENT METHOD</Text>
+                        </View>
+
+                        <CartPaymentCard online={online} cashOnDelivery={cashOnDelivery} handleOnline={handleOnline} handleCashOnDelivery={handleCashOnDelivery} />
+                        <CartProductCharges orderFinal={orderFinal} />
+
+
+
+                        <CartSuplierCard SuplierNameCart={SuplierNameCart} orderFinal={orderFinal} />
+                        <CartList cartData={cartData} ReCalculateTotalvalue={ReCalculateTotalvalue} addQuantityOrderTotal={addQuantityOrderTotal} substarctQuantityOrderTotal={substarctQuantityOrderTotal} />
+
                     </View>
 
-                    <CartPaymentCard online={online} cashOnDelivery={cashOnDelivery} handleOnline={handleOnline} handleCashOnDelivery={handleCashOnDelivery} />
-                    <CartProductCharges orderFinal={orderFinal} />
+                </ScrollView>
+            }
 
 
 
-                    <CartSuplierCard SuplierNameCart={SuplierNameCart} orderFinal={orderFinal} />
-                    <CartList cartData={cartData} ReCalculateTotalvalue={ReCalculateTotalvalue} addQuantityOrderTotal={addQuantityOrderTotal} substarctQuantityOrderTotal={substarctQuantityOrderTotal} />
 
-                </View>
-
-            </ScrollView>{cashOnDelivery || online ?
+            {((cashOnDelivery || online) && batchicon > 0) ?
                 <TouchableWithoutFeedback onPress={() => navigation.navigate('Margin', { orderFinal, SuplierNameCart })}>
                     <View style={styles.customButton}>
                         <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>PROCEED</Text>

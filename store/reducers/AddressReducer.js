@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
                 ...state
             }
         case SET_ADDRESS:
-            // console.log(action.addressDataUser);
+
             return {
                 ...state, AddressData: action.addressDataUser
             }

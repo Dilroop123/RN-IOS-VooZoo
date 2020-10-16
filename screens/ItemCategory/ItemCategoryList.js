@@ -22,7 +22,7 @@ import ItemCategoryImages from './ItemCategoryImages';
 
 const ItemCategoryList = ({ navigation, route, navigateTo, itemCatData }) => {
 
-    console.log('rerender on fav  click');
+
 
     const userdata = useSelector(state => state.user.UserData);
     const dispatch = useDispatch();

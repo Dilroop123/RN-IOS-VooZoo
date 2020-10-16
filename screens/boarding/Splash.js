@@ -26,7 +26,7 @@ const Splash = ({ navigation }) => {
 
 
     AsyncStorage.getItem('USER_ID').then(async (value) => {
-      console.log(value);
+
 
       if (value != undefined) {
         await dispatch(UserAction.getUserById(value));
@@ -34,7 +34,7 @@ const Splash = ({ navigation }) => {
       } else {
         navigation.replace("Boarding");
       }
-      // console.log(value);
+
 
     });
 

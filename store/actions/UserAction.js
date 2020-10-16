@@ -8,8 +8,7 @@ import baseUrl from '../../constants/baseUrl';
 
 export const createUser = (phoneNumber, reciveotp, sessionkey) => {
 
-    // console.log('otp is ' + sessionkey);
-    // console.log('sessionId is ' + reciveotp);
+
 
     return async dispatch => {
 
@@ -35,7 +34,7 @@ export const createUser = (phoneNumber, reciveotp, sessionkey) => {
         });
 
         const resData = await response.json();
-        console.log(resData);
+
 
         dispatch({
             type: CREATE_USER, userdata: resData
@@ -68,7 +67,7 @@ export const GenerateOtp = (mobilenumber) => {
         });
 
         const resData = await response.json();
-        console.log(resData);
+
 
         dispatch({
             type: GENERATE_OTP, otpdata: resData
@@ -96,7 +95,7 @@ export const updateUserGender = (id, gendervalue, mobile) => {
         });
 
         const resData = await response.json();
-        // console.log(resData);
+
 
         dispatch({
             type: UPDATE_GENDER, userdata: resData
@@ -131,7 +130,7 @@ export const updateUserContact = (userID, fullName, mobile, email, pincode, addr
         });
 
         const resData = await response.json();
-        // console.log(resData);
+
 
         dispatch({
             type: UPDATE_CONTACT, userdata: resData
@@ -161,7 +160,7 @@ export const updateUserPersonal = (userID, dateOfBirth, gender) => {
         const resData = await response.json();
 
         dispatch({
-            type: UPDATE_GENDER, userdata: resData
+            type: UPDATE_CONTACT, userdata: resData
 
         });
     };
@@ -184,7 +183,7 @@ export const getUserById = (UserId) => {
         });
 
         const resData = await response.json();
-        console.log(resData);
+
 
         dispatch({
             type: CREATE_USER, userdata: resData

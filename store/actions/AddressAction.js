@@ -31,7 +31,7 @@ export const creatAddress = (CustomerName, PhoneNumber, HouseNumber, Street, Use
         });
 
         const resData = await response.json();
-        //  console.log(resData);
+
 
         dispatch({
             type: CREATE_ADDRESS, addData: resData
@@ -42,7 +42,7 @@ export const creatAddress = (CustomerName, PhoneNumber, HouseNumber, Street, Use
 
 
 export const fetchAddress = (id) => {
-    //console.log(id);
+
     return async dispatch => {
         const response = await fetch(baseUrl.url + 'api/v1/address/get', {
             method: 'POST',
@@ -57,7 +57,7 @@ export const fetchAddress = (id) => {
 
         const resData = await response.json();
 
-        // console.log(resData);
+
 
 
 
@@ -67,7 +67,7 @@ export const fetchAddress = (id) => {
 
 
 export const getPrimaryAddress = (id) => {
-    //console.log(id);
+
     return async dispatch => {
         const response = await fetch(baseUrl.url + 'api/v1/address/primaryAddress', {
             method: 'POST',
@@ -82,7 +82,7 @@ export const getPrimaryAddress = (id) => {
 
         const resData = await response.json();
 
-        // console.log(resData);
+
 
 
 
@@ -92,7 +92,7 @@ export const getPrimaryAddress = (id) => {
 
 
 export const hideAddrress = (id) => {
-    //console.log(id);
+
     return async dispatch => {
         const response = await fetch(baseUrl.url + 'api/v1/address/update', {
             method: 'PUT',
@@ -118,7 +118,7 @@ export const hideAddrress = (id) => {
 
 export const UpdateAddress = (id, CustomerName, PhoneNumber, HouseNumber, Street, City, LandMark, State, PinCode) => {
 
-    //  console.log(LandMark);
+
 
     return async dispatch => {
 
@@ -144,7 +144,7 @@ export const UpdateAddress = (id, CustomerName, PhoneNumber, HouseNumber, Street
         });
 
         const resData = await response.json();
-        //  console.log(resData);
+
 
         dispatch({
             type: CREATE_ADDRESS, addData: resData
@@ -157,7 +157,7 @@ export const UpdateAddress = (id, CustomerName, PhoneNumber, HouseNumber, Street
 
 export const selectAddress = (newId, oldId) => {
 
-    //  console.log(LandMark);
+
 
     return async dispatch => {
 
@@ -175,7 +175,7 @@ export const selectAddress = (newId, oldId) => {
         });
 
         const resData = await response.json();
-        //  console.log(resData);
+
 
         dispatch({
             type: CREATE_ADDRESS, addData: resData

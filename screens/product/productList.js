@@ -33,8 +33,7 @@ const ProductList = ({ navigation, route }) => {
 
     const userdata = useSelector(state => state.user.UserData);
     const reviewCategory = useSelector(state => state.review.reviewItemCategoryData);
-    //   console.log(reviewCategory.reviewCount);
-    // console.log(reviewCategory.length);
+
     const batchicon = useSelector(state => state.cart.BatchIcon);
     const { itemCatId } = route.params;
     const { catId } = route.params;
@@ -94,9 +93,16 @@ const ProductList = ({ navigation, route }) => {
                     </View>
                 </View>
             ), headerLeft: () => (
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                     <HeaderBackButton onPress={() => moveBack()} />
+                    <Iconic
+                        style={{ paddingRight: wp('17.5%') }}
+                        name='home-outline'
+                        type='font-awesome'
+                        size={23}
+                        color='black'
 
+                        onPress={() => navigation.navigate('Home')} />
                 </View>
             ),
 
@@ -138,7 +144,7 @@ const ProductList = ({ navigation, route }) => {
 
     const toggleModal = useCallback(
         (imageurl, name, sharevalue, itemCatId) => {
-            //   console.log(imageurl);
+
             productImagesUrl = [];
             for (var key in imageurl) {
                 productImagesUrl.push(imageurl[key].privateUrl);

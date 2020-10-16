@@ -14,11 +14,11 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 
 const MyOrders = ({ navigation }) => {
-    console.log(' rerender in orders');
+
 
     const userdata = useSelector(state => state.user.UserData);
     const orderData = useSelector(state => state.order.OrderList);
-    // console.log(orderData);
+
     const dispatch = useDispatch();
 
 

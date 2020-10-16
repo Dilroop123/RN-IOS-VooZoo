@@ -21,7 +21,7 @@ export const addWishlist = (userId, itemCategoryId) => {
         });
 
         const resData = await response.json();
-        //console.log(resData);
+
 
         dispatch({
             type: ADD_WHISHLIST, userdata: resData
@@ -47,7 +47,7 @@ export const ViewWishlist = (userId) => {
         });
 
         const resData = await response.json();
-        //console.log(resData);
+
 
         dispatch({
             type: SET_WHISHLIST, wishData: resData
@@ -72,8 +72,7 @@ export const RemoveWishList = (userId, itemCatId) => {
             })
         });
 
-        //  const resData = await response.json();
-        //console.log(resData);
+
 
         dispatch({
             type: REMOVE_LIST, wishData: 'resData'

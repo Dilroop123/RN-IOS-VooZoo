@@ -1,22 +1,6 @@
-/**
- * Food Delivery - React Native Template
- *
- * @format
- * @flow
- */
 
-// import dependencies
 import React, { useState, useEffect } from 'react';
-import {
-  Alert,
-  I18nManager,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  Button,
-  View,
-} from 'react-native';
+import { Alert, I18nManager, SafeAreaView, StatusBar, StyleSheet, Text, Button, View } from 'react-native';
 
 import NumericKeyboard from '../../components/NumericKeyboard';
 import color from '../../style/color'
@@ -54,7 +38,7 @@ const VerifyOtp = ({ navigation, route }) => {
             var arr = otp.toString().split('');
             var digits = arr.map(function (el) { return +el })
             setPin(digits);
-            console.log(otp);
+
             SmsRetriever.removeSmsListener();
             // submit();
           });
@@ -93,12 +77,12 @@ const VerifyOtp = ({ navigation, route }) => {
   };
 
   const submit = async () => {
-    console.log(pin);
+
     if (phoneNumber != '' && phoneNumber != undefined && phoneNumber != null) {
       await dispatch(UserAction.createUser(phoneNumber, pin, userdataotp.Details));
     }
 
-    // console.log(userdata);
+
 
     // if (userdata.userData._id != undefined) {
     navigation.replace('Gender');

@@ -85,7 +85,7 @@ const CartList = ({ navigation, cartData, ReCalculateTotalvalue, addQuantityOrde
                     <View style={styles.rowOne}>
                         <Text style={{ width: 150 }}>{item.productId.title}</Text>
                         <TouchableWithoutFeedback onPress={() => deleteCartItem(item)}>
-                            <MatericalIcon name="delete" size={18} color='black' />
+                            <MatericalIcon name="delete" size={26} color='black' />
                         </TouchableWithoutFeedback>
                     </View>
                     <View style={styles.subView}>

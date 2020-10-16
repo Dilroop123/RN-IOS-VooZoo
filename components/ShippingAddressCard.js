@@ -25,7 +25,7 @@ const ShippingAddressCard = ({ cardHeading, addressdata }) => {
                 <View style={{ marginTop: hp('2%'), paddingHorizontal: 20 }}>
                     <Text>{addressdata.CustomerName}</Text>
                     <Text>{`${addressdata.HouseNumber} ${addressdata.Street} , ${addressdata.City} , ${addressdata.State} , ${addressdata.PinCode}`}</Text>
-
+                    <Text>Near to {addressdata.LandMark}</Text>
                     <Text>{addressdata.PhoneNumber}</Text>
                 </View>
             </Card>

@@ -21,9 +21,20 @@ const ProductSizeFilter = ({ navigation, route, toggleModal, showSize, item, cat
     const [disableContinue, setDisableContinue] = useState(true);
     const [quantityValue, SetQuantity] = useState(1);
     const [sizelist, setSizeList] = useState(item.noOfProducts);
+
+
     const [selectedItem, setSelectedItem] = useState();
     const [cartSuplierId, setSuplierIdCart] = useState();
     const [cartSuplierName, setCartSuplierName] = useState();
+
+
+    if (sizelist.length == 1) {
+        sizelist[0].Color = color.blue;
+        if (selectedItem == null || selectedItem == "" || selectedItem == undefined) {
+            setSelectedItem(sizelist[0]);
+            setDisableContinue(false);
+        }
+    }
 
     for (var key in cartData) {
 

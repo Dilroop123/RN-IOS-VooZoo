@@ -61,7 +61,7 @@ const FilterItemCategoryModal = ({ navigatetoproduct, showFilterModal, toggleFil
         // navigation.navigate('ProductList', { catId, subCatId, itemCatId: id, screenTitle: name, addOnPrice, gstPercent, voozooProfit, discount, cod });
         // navigation.navigate('ProductList');
         navigatetoproduct();
-        console.log(SelectedEmpoloy);
+
     }
 
     const selectedCard = useCallback(
@@ -157,7 +157,7 @@ const FilterItemCategoryModal = ({ navigatetoproduct, showFilterModal, toggleFil
 
             if (filterListData[index].active = true) {
                 filterListData[index].active = false;
-                console.log('found');
+
             }
         setRefreshValue(!refreshValue);
         //  dispatch(FilterAction.fetchFilterData([], userdata.userData._id));

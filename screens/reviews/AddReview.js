@@ -17,6 +17,7 @@ const AddReview = ({ navigation, route }) => {
     const dispatch = useDispatch();
     const { rating } = route.params;
     const { productdata } = route.params;
+
     const [uploadImagesServer, setUploadedImagesServer] = useState([]);
 
     const [reviewTextArea, setReviewTextArea] = useState();
@@ -48,8 +49,8 @@ const AddReview = ({ navigation, route }) => {
             );
         }
         else {
-            console.log(reviewTextArea);
-            dispatch(ReviewAction.createReview(userdata.userData._id, productdata.productId._id, productdata.productId.itemCategoryId, reviewTextArea, rating, uploadImagesServer, graphLine));
+
+            dispatch(ReviewAction.createReview(userdata.userData._id, productdata.productId._id, productdata.productId.itemCategoryId, reviewTextArea, rating, uploadImagesServer, graphLine, productdata.suplierId));
             navigation.pop();
         }
     }
@@ -182,7 +183,7 @@ const styles = StyleSheet.create({
         height: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'black',
+        backgroundColor: 'rgba(52, 52, 52, 0.8)',
         overflow: 'hidden'
     },
 });

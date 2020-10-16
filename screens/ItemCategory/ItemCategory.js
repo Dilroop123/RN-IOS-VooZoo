@@ -32,7 +32,7 @@ const ItemCategory = ({ navigation, route }) => {
   const { catId } = route.params;
   const { subCatId } = route.params;
   const { filterList } = route.params;
-  //console.log(filterList);
+
   const [refreshing, setRefreshing] = useState(false);
 
   const TotalItemCategory = useSelector(state => state.category.ItemCategoryData);
@@ -71,8 +71,16 @@ const ItemCategory = ({ navigation, route }) => {
           </View>
         </View>
       ), headerLeft: () => (
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
           <HeaderBackButton onPress={() => moveBack()} />
+          <Icon
+            style={{ paddingRight: wp('17.5%') }}
+            name='home-outline'
+            type='font-awesome'
+            size={23}
+            color='black'
+
+            onPress={() => navigation.navigate('Home')} />
 
         </View>
       ),

@@ -28,7 +28,7 @@ export const CreateOrder = (userId, cartData, addressId, MerchantMargin, orderSt
         });
 
         const resData = await response.json();
-        // console.log(resData);
+
 
         dispatch({
             type: CREATE_ORDER, RecivedResponse: resData

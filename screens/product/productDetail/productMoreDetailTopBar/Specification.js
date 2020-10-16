@@ -13,7 +13,7 @@ const Specification = React.memo(({ navigation, route, }) => {
 
 
     const productdata = useSelector(state => state.product.productId);
-    // console.log(productdata.specifications);
+
 
     const renderers = {
         table: makeTableRenderer({ WebView })

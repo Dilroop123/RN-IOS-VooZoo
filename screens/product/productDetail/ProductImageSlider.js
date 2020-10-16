@@ -8,7 +8,7 @@ import { SliderBox } from 'react-native-image-slider-box';
 const ProductImageSlider = ({ productImagesUrl }) => {
 
 
-    console.log('re render in image slider');
+
 
 
 
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 
 const areEqual = (prevProps, nextProps) => {
 
-    //console.log(prevProps.productImagesUrl);
+
 
     // return prevProps.productImagesUrl === nextProps.productImagesUrl
     return true;

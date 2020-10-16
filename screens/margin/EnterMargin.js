@@ -22,7 +22,7 @@ const EnterMargin = ({ showMargin, calculateMargin, marginPrice, orderFinal }) =
             <Card containerStyle={styles.cardContainer}>
 
                 <View style={styles.inputContainer}>
-                    <Text style={styles.TextCash}>Cash To Collect From Customer</Text>
+                    <Text style={styles.TextCash}>Set Customer Price</Text>
                     <View style={{ flexDirection: 'row' }}>
 
                         <Input value={marginPrice}

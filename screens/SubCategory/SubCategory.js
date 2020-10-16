@@ -26,7 +26,7 @@ const SubCategory = ({ navigation, route }) => {
     const dispatch = useDispatch();
     const TotalSubCategory = useSelector(state => state.category.SubCategoryData);
     const batchicon = useSelector(state => state.cart.BatchIcon);
-    console.log(TotalSubCategory);
+
 
     const [refreshing, setRefreshing] = useState(false);
 

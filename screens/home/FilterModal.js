@@ -64,12 +64,12 @@ const FilterModal = ({ showFilterModal, toggleFilterModal }) => {
                 //dispatch(AddressAction.selectAddress(item._id, AddressData[activeIndex]._id));
             }
             if (item.text == 'Category') {
-                console.log('selected category')
+
 
                 setFilterListData(TotalCategory);
 
             } else {
-                console.log(' others')
+
                 setFilterListData(PriceList);
             }
 

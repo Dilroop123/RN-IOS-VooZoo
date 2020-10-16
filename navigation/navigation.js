@@ -196,11 +196,11 @@ function HomeStack() {
       headerTintColor: 'gray',
       headerTitleAlign: 'left',
       headerTitleStyle: {
+        fontSize: 16,
+        width: wp('50%'),
+        alignSelf: 'flex-end',
 
-        fontSize: 16
-      },
-      headerTitleStyle: {
-        textAlign: "center"
+
       },
     }}>
       <Stack.Screen name="Home" component={HomeBottomTabs}
@@ -210,7 +210,7 @@ function HomeStack() {
           headerTintColor: color.blue,
           headerTitleStyle: {
             fontWeight: 'bold',
-            fontSize: 24
+            fontSize: 22
           },
           headerRight: () => (
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -247,7 +247,15 @@ function HomeStack() {
 
       />
       <Stack.Screen name="SubCategory" component={SubCategory} options={({ route }) => ({ title: route.params.screenTitle })} />
-      <Stack.Screen name="ItemCategory" component={ItemCategory} options={({ route }) => ({ title: route.params.screenTitle })} />
+      <Stack.Screen name="ItemCategory" component={ItemCategory} options={({ route }) => ({
+        title: route.params.screenTitle, headerTitleStyle: {
+
+          fontSize: 16,
+          width: wp('50%'),
+          alignSelf: 'flex-start',
+          marginLeft: wp('5%')
+        },
+      })} />
       <Stack.Screen name="ProductList" component={ProductList} options={({ route }) => ({ title: route.params.screenTitle })} />
       <Stack.Screen name="ProductDetail" component={ProductDetail} options={({ route }) => ({ title: 'Product Detail' })} />
       <Stack.Screen name="MainContainer" component={ProductHighlight} options={({ route }) => ({ title: 'Product Reviews' })} />

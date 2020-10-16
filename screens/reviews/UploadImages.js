@@ -187,8 +187,8 @@ const styles = StyleSheet.create({
         height: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor:'black',
-        
+        backgroundColor: 'rgba(52, 52, 52, 0.8)',
+
         overflow: 'hidden'
     },
 });

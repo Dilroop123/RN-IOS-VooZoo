@@ -15,7 +15,7 @@ const Personal = ({ navigation }) => {
     const userdata = useSelector(state => state.user.UserData);
     const dispatch = useDispatch();
 
-    const [date, setDate] = useState(new Date(1598051730000));
+    const [date, setDate] = useState(new Date());
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
     const [textInputValue, setTextinputValue] = useState(userdata.userData.gender);
@@ -26,7 +26,7 @@ const Personal = ({ navigation }) => {
         setShow(Platform.OS === 'ios');
         setDate(currentDate);
         setSelectedDate(currentDate.toISOString().substring(0, 10));
-        // console.log(currentDate.toISOString().substring(0, 10));
+
     };
 
     const showMode = () => {
@@ -36,7 +36,8 @@ const Personal = ({ navigation }) => {
 
     let data = [
         { key: 0, label: 'Male' },
-        { key: 1, label: 'Female' }
+        { key: 1, label: 'Female' },
+        { key: 2, label: 'Others' }
     ];
 
 

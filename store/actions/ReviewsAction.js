@@ -7,8 +7,8 @@ import baseUrl from '../../constants/baseUrl';
 
 
 
-export const createReview = (userId, productId, itemcategoryId, review, rating, reviewImages, productGraphLine) => {
-    //  console.log(reviewImages);
+export const createReview = (userId, productId, itemcategoryId, review, rating, reviewImages, productGraphLine, supplierId) => {
+
     return async dispatch => {
 
         const response = await fetch(baseUrl.url + 'api/v1/reviews/addReview', {
@@ -23,12 +23,13 @@ export const createReview = (userId, productId, itemcategoryId, review, rating, 
                 review,
                 rating,
                 reviewImages,
-                productGraphLine
+                productGraphLine,
+                supplierId
             })
         });
 
         const resData = await response.json();
-        // console.log(resData);
+
 
         dispatch({
             type: CREATE_REVIEW, RecivedResponse: resData

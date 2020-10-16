@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const ItemBasicDetails = ({ item, product }) => {
 
-    // console.log(product);
+
     var totalAddOnPrice = 0;
     var addOnPrice = (item.addOnPrice / 100) * product[0].productPrice;
     addOnPrice = product[0].productPrice + addOnPrice;

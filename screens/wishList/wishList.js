@@ -18,7 +18,7 @@ import Modal from 'react-native-modal';
 
 const WishList = ({ navigation, route, navigateTo, itemCatData, hideFavButton }) => {
 
-    // console.log(itemCatData[0]);
+
     const userdata = useSelector(state => state.user.UserData);
     const dispatch = useDispatch();
     const [isModalVisible, setModalVisible] = useState(false);
@@ -304,7 +304,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-       backgroundColor: 'black',
+        backgroundColor: 'rgba(52, 52, 52, 0.8)',
         overflow: 'hidden'
     },
     cardTitle: {

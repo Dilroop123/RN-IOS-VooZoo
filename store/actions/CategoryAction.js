@@ -42,12 +42,13 @@ export const fetchCategory = () => {
 
       loadedCatgeory.push(
         new Category(
-          resData[key].id,
+          resData[key]._id,
           resData[key].categoryName,
           resData[key].categoryImage[0].privateUrl,
           resData[key].categoryStatus,
           resData[key].categoryHeader[0].privateUrl,
-          false
+          false,
+          resData[key].count
         )
       );
     }
@@ -84,11 +85,14 @@ export const fetchSubCategory = (catId) => {
 
       loadedSubCatgeory.push(
         new SubCategory(
-          resData[key].id,
+          resData[key]._id,
           resData[key].subCategoryName,
           resData[key].subCategoryImage[0].privateUrl,
           resData[key].subCategoryStatus,
           resData[key].filterlist,
+          false,
+          resData[key].count,
+
           //resData[key].subCategoryHeader[0].privateUrl
         )
       );
@@ -148,7 +152,7 @@ export const fetchHomeLatestItemCategory = (userId) => {
     });
 
     const resData = await response.json();
-    console.log()
+
     dispatch({
       type: SET_HOME_ITEM_CATEGORY, homecategory: resData
 
@@ -171,8 +175,7 @@ export const clearProduct = () => {
 
 
 export const WhisListItemCategory = (id, value) => {
-  // console.log('id is' + id);
-  // console.log('value is' + value);
+
   return async dispatch => {
 
     const response = await fetch(baseUrl.url + 'api/v1/itemcategory/update', {

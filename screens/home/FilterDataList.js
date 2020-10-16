@@ -13,6 +13,7 @@ import ItemCategoryImages from '../ItemCategory/ItemCategoryImages';
 import ItemBasicDetails from '../ItemCategory/ItemBasicDetails';
 import { Card, ListItem } from 'react-native-elements'
 import * as WhishListAction from '../../store/actions/WishListAction';
+import ShareModal from '../../components/ShareModal';
 
 const wait = (timeout) => {
     return new Promise(resolve => {
@@ -27,6 +28,34 @@ const FilterDataList = ({ navigation, filters, navigateTo }) => {
     const dispatch = useDispatch();
 
 
+    const [isModalVisible, setModalVisible] = useState(false);
+
+    const [imageurlData, setimageurlData] = useState();
+    const [nameData, setnameData] = useState();
+    const [ItemCategoryId, setItemCategoryId] = useState();
+    var productImagesUrl = [];
+
+
+    const toggleModal = useCallback(
+        (product, name, itemCatId) => {
+
+            productImagesUrl = [];
+            for (const key in product) {
+                productImagesUrl.push(product[key].productimages[0].privateUrl);
+            }
+
+            setimageurlData(productImagesUrl);
+            setnameData(name);
+            setItemCategoryId(itemCatId);
+            setModalVisible(!isModalVisible);
+
+        }, []);
+
+    const toggleModalVisibility = useCallback(
+        () => {
+
+            setModalVisible(false);
+        }, []);
 
 
     const addToWishList = useCallback(item => {
@@ -94,6 +123,13 @@ const FilterDataList = ({ navigation, filters, navigateTo }) => {
 
 
         <View style={styles.container}>
+
+            <ShareModal shareOthers={false}
+                toggleModalVisibility={toggleModalVisibility}
+                ItemCategoryId={ItemCategoryId}
+                nameData={nameData}
+                isModalVisible={isModalVisible}
+                imageurlData={imageurlData} />
 
 
             <FlatList
