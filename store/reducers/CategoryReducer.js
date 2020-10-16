@@ -1,5 +1,5 @@
 //import PRODUCTS from '../../data/dummy-data';
-import { SET_CATEGORY, REMOVE_FROM_PRODUCTLIST, SET_HOME_ITEM_CATEGORY, REMOVE_FROM_ITEMCATEGORY, SET_SUBCATEGORY, SET_ITEM_CATEGORY, SET_SLIDER, SET_PRODUCT, UPDATE_ITEMCATEGORY, REMOVE_FROM_SUBCATEGORY } from '../actions/CategoryAction';
+import { SET_CATEGORY, REMOVE_FROM_PRODUCTLIST, REMOVE_FROM_FILTER_PRODUCTLIST, SET_FILTER_PRODUCT, SET_HOME_ITEM_CATEGORY, REMOVE_FROM_ITEMCATEGORY, SET_SUBCATEGORY, SET_ITEM_CATEGORY, SET_SLIDER, SET_PRODUCT, UPDATE_ITEMCATEGORY, REMOVE_FROM_SUBCATEGORY } from '../actions/CategoryAction';
 //import CurrentUser_Login from '../../model/Currentuser';
 const initialState = {
     CategoryData: [],
@@ -7,7 +7,8 @@ const initialState = {
     ItemCategoryData: [],
     SliderData: [],
     ProductData: [],
-    HomeItemCategory: []
+    HomeItemCategory: [],
+    ProductFilterData: []
 };
 
 export default (state = initialState, action) => {
@@ -32,6 +33,10 @@ export default (state = initialState, action) => {
             return {
                 ...state, SliderData: action.sliderdata
             }
+        case REMOVE_FROM_FILTER_PRODUCTLIST:
+            return {
+                ...state, ProductFilterData: []
+            }
         case SET_PRODUCT:
             return {
                 ...state, ProductData: action.productData
@@ -55,6 +60,10 @@ export default (state = initialState, action) => {
         case SET_HOME_ITEM_CATEGORY:
             return {
                 ...state, HomeItemCategory: action.homecategory
+            }
+        case SET_FILTER_PRODUCT:
+            return {
+                ...state, ProductFilterData: action.filterdata
             }
     }
     return state;

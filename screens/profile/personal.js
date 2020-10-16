@@ -10,6 +10,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import ModalSelector from 'react-native-modal-selector'
+import moment from 'moment';
 
 const Personal = ({ navigation }) => {
     const userdata = useSelector(state => state.user.UserData);
@@ -23,10 +24,13 @@ const Personal = ({ navigation }) => {
 
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
+
+        const temp = moment(currentDate).format('YYYY-MM-DD')
+
+
         setShow(Platform.OS === 'ios');
         setDate(currentDate);
-        setSelectedDate(currentDate.toISOString().substring(0, 10));
-
+        setSelectedDate(temp);
     };
 
     const showMode = () => {

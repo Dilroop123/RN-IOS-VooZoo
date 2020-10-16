@@ -22,6 +22,7 @@ import ShareModal from '../../components/ShareModal';
 import ProductImage from './ProductImage';
 import ProductCatalogReviews from '../../components/ProductCatalogReviews';
 import BlankReviewTemplate from '../../components/BlankReviewTemplate';
+import FilterItemCategoryModal from './FilterItemCategoryModal';
 
 const wait = (timeout) => {
     return new Promise(resolve => {
@@ -33,12 +34,14 @@ const ProductList = ({ navigation, route }) => {
 
     const userdata = useSelector(state => state.user.UserData);
     const reviewCategory = useSelector(state => state.review.reviewItemCategoryData);
+    const filterproducts = useSelector(state => state.category.ProductFilterData);
+
 
     const batchicon = useSelector(state => state.cart.BatchIcon);
     const { itemCatId } = route.params;
     const { catId } = route.params;
     const { subCatId } = route.params;
-
+    const { filterList } = route.params;
     const { addOnPrice } = route.params;
     const { gstPercent } = route.params;
     const { voozooProfit } = route.params;
@@ -46,10 +49,8 @@ const ProductList = ({ navigation, route }) => {
     const { cod } = route.params;
 
     const catdataobj = { addOnPrice, gstPercent, voozooProfit, discount, cod };
-
+    const [showFilterModal, setShowFilterModal] = useState(false);
     const [isModalVisible, setModalVisible] = useState(false);
-    const [modelImage, setmodelImages] = useState(false);
-    const [modalDescription, setModalDescription] = useState(false);
     const [shareOthers, setShareOthers] = useState(false);
     const [ItemCategoryId, setItemCategoryId] = useState();
     const [imageurlData, setimageurlData] = useState();
@@ -93,16 +94,9 @@ const ProductList = ({ navigation, route }) => {
                     </View>
                 </View>
             ), headerLeft: () => (
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <HeaderBackButton onPress={() => moveBack()} />
-                    <Iconic
-                        style={{ paddingRight: wp('17.5%') }}
-                        name='home-outline'
-                        type='font-awesome'
-                        size={23}
-                        color='black'
 
-                        onPress={() => navigation.navigate('Home')} />
                 </View>
             ),
 
@@ -111,6 +105,7 @@ const ProductList = ({ navigation, route }) => {
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
+
             dispatch(CategoryAction.fetchProduct(catId, subCatId, itemCatId))
             dispatch(ReviewAction.fetchItemCategoryReviews(itemCatId))
         });
@@ -119,7 +114,9 @@ const ProductList = ({ navigation, route }) => {
     }, [dispatch]);
 
 
-
+    const toggleFilterModal = () => {
+        setShowFilterModal(!showFilterModal);
+    }
 
 
 
@@ -131,6 +128,7 @@ const ProductList = ({ navigation, route }) => {
 
     const moveBack = () => {
         dispatch(CategoryAction.clearProduct())
+        dispatch(CategoryAction.clearFilterProduct())
         navigation.pop();
 
     }
@@ -202,7 +200,20 @@ const ProductList = ({ navigation, route }) => {
 
 
         <View style={styles.container}>
+            <View style={styles.catalogContainer}>
+                <Text style={styles.textseacrh}>Showing All Catalogs</Text>
+                <TouchableWithoutFeedback onPress={() => setShowFilterModal(!showFilterModal)}>
+                    <View style={{ flexDirection: 'row' }}>
+                        <Icon name="filter" size={18} color={color.blue} />
+                        {/*           
+              <Badge containerStyle={{ position: 'absolute', top: -9, right: -5, zIndex: 1 }} value='1' status="error" /> */}
 
+
+
+                        <Text style={{ color: color.blue, marginLeft: 5 }}>FILTERS</Text>
+                    </View>
+                </TouchableWithoutFeedback>
+            </View>
             <ScrollView alwaysBounceVertical={true}
                 showsVerticalScrollIndicator={false}
                 style={{ backgroundColor: '#fff' }}
@@ -210,19 +221,40 @@ const ProductList = ({ navigation, route }) => {
 
             >
 
+                <FilterItemCategoryModal itemCatId={itemCatId} filterList={filterList} showFilterModal={showFilterModal} toggleFilterModal={toggleFilterModal} />
+
+
                 <ShareModal shareOthers={shareOthers} toggleModalVisibility={toggleModalVisibility} ItemCategoryId={ItemCategoryId} nameData={nameData} isModalVisible={isModalVisible} imageurlData={imageurlData} />
 
 
 
 
-                <FlatList
 
-                    data={TotalProduct}
-                    keyExtractor={item => item.id}
-                    renderItem={renderItems}
-                    contentContainerStyle={styles.productList}
-                />
-                {reviewCategory.reviewCount != undefined && reviewCategory.reviewCount > 0 ?
+
+                {filterproducts.length > 0 ?
+                    <FlatList
+
+                        data={filterproducts}
+                        keyExtractor={item => item.id}
+                        renderItem={renderItems}
+                        contentContainerStyle={styles.productList}
+                    /> : <FlatList
+
+                        data={TotalProduct}
+                        keyExtractor={item => item.id}
+                        renderItem={renderItems}
+                        contentContainerStyle={styles.productList}
+                    />}
+
+                {/* {filterproducts.products.length == 0 ?
+                    <View style={{ marginTop: hp('5%'), marginHorizontal: wp('10%'), alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ color: 'red', fontSize: 16 }}>No products are found with this filter</Text>
+                    </View>
+                    : null} */}
+
+
+
+                {reviewCategory.reviewCount != undefined && reviewCategory.reviewCount && filterproducts.products > 0 ?
                     <View>
                         <ProductCatalogReviews reviewCategory={reviewCategory} />
                         <TouchableWithoutFeedback onPress={() => { navigation.navigate('AllCatalogReviews', { itemcategory: itemCatId, productId: 'false' }) }}>
@@ -260,7 +292,24 @@ const styles = StyleSheet.create({
         padding: 0,
         paddingBottom: hp('0.5%'),
         marginTop: hp('1.3%')
-    }
+    },
+    catalogContainer: {
+
+        paddingRight: 25,
+        width: '100%',
+
+        paddingLeft: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        borderWidth: 1,
+        borderColor: color.gray,
+        paddingVertical: hp('1.6%'),
+        backgroundColor: '#fff'
+
+    }, textseacrh: {
+        color: 'gray',
+        marginLeft: wp('2%')
+    },
 });
 
 

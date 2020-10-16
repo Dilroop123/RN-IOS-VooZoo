@@ -23,6 +23,8 @@ const wait = (timeout) => {
 
 const FilterDataList = ({ navigation, filters, navigateTo }) => {
 
+
+
     const userdata = useSelector(state => state.user.UserData);
     const [refreshValue, setRefreshValue] = useState(false);
     const dispatch = useDispatch();
@@ -81,7 +83,7 @@ const FilterDataList = ({ navigation, filters, navigateTo }) => {
 
     const renderItems = ({ item }) => ( // catId, subCatId
 
-        <TouchableWithoutFeedback onPress={() => navigateTo(item.categoryId, item.subCategoryId, item._id, item.name, item.addOnPrice, item.gstPercent, item.voozooProfit, item.discount, item.cod)}>
+        <TouchableWithoutFeedback onPress={() => navigateTo(item.categoryId, item.subCategoryId, item._id, item.name, item.addOnPrice, item.gstPercent, item.voozooProfit, item.discount, item.cod, item.subCategoryId.filterlist)}>
 
 
 

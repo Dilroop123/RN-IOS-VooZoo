@@ -39,17 +39,17 @@ const ItemBasicDetails = React.memo(({ item }) => {
                 <Text style={{ marginTop: hp('1%') }}>{item.name}</Text>
                 <View style={{ marginTop: hp('1%'), flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
                     <Text>Starting from </Text>
-                    <Text>₹ {NormalPrice}</Text>
-                    <Text style={{ fontSize: 11, marginLeft: wp('2%'), textDecorationLine: 'line-through', color: 'gray' }}>{totalAddOnPrice}</Text>
-                    <Text style={{ color: color.pink, marginLeft: wp('2%'), fontSize: 11 }}>{itemOff} off</Text>
+                    <Text>₹{NormalPrice}</Text>
+                    <Text style={{ fontSize: 11, marginLeft: wp('2%'), textDecorationLine: 'line-through', color: 'gray' }}>₹{totalAddOnPrice}</Text>
+                    <Text style={{ color: color.pink, marginLeft: wp('2%'), fontSize: 11 }}>{itemOff}% off</Text>
                 </View>
 
 
                 <View style={{ marginTop: hp('1%'), paddingVertical: hp('0.2%'), paddingHorizontal: wp('1%'), backgroundColor: '#ffe3fb', width: wp('38%'), flexDirection: 'row', alignItems: 'center' }} >
                     <Icon name='dump-truck' type='MaterialCommunityIcons' size={20} color={color.pink} />
                     <View style={{ marginLeft: wp('2%') }}>
-                        {item.cod ? <Text style={{ color: color.pink, fontSize: 11 }}>COD AVALIABLE</Text> :
-                            <Text style={{ color: color.pink, fontSize: 11 }}>COD NOT AVALIABLE</Text>
+                        {item.cod ? <Text style={{ color: color.pink, fontSize: 11 }}>COD AVAILABLE</Text> :
+                            <Text style={{ color: color.pink, fontSize: 11 }}>COD NOT AVAILABLE</Text>
                         }
 
                     </View>

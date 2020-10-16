@@ -14,7 +14,7 @@ import baseUrl from '../../constants/baseUrl';
 
 let SelectedEmpoloy = [];
 
-const FilterItemCategoryModal = ({ navigatetoproduct, showFilterModal, toggleFilterModal, filterList }) => {
+const FilterItemCategoryModal = ({ showFilterModal, toggleFilterModal, filterList, itemCatId }) => {
 
     const TotalCategory = useSelector(state => state.category.CategoryData);
     const userdata = useSelector(state => state.user.UserData);
@@ -27,7 +27,7 @@ const FilterItemCategoryModal = ({ navigatetoproduct, showFilterModal, toggleFil
 
 
     useEffect(() => {
-
+        SelectedEmpoloy = [];
         for (var index in filterList) {
             renderFilterListKey.push({
                 text: filterList[index].filtername, key: filterList[index]._id, primary: index == 0 ? true : false
@@ -35,6 +35,10 @@ const FilterItemCategoryModal = ({ navigatetoproduct, showFilterModal, toggleFil
 
 
         }
+
+
+
+
         setTodos(renderFilterListKey);
         var filterFirstvalue = [];
 
@@ -56,11 +60,9 @@ const FilterItemCategoryModal = ({ navigatetoproduct, showFilterModal, toggleFil
 
 
     const loadData = () => {
-        dispatch(CategoryAction.fetchFilterProduct(SelectedEmpoloy));
+        dispatch(CategoryAction.fetchFilterProduct(SelectedEmpoloy, itemCatId));
         closeModel();
-        // navigation.navigate('ProductList', { catId, subCatId, itemCatId: id, screenTitle: name, addOnPrice, gstPercent, voozooProfit, discount, cod });
-        // navigation.navigate('ProductList');
-        navigatetoproduct();
+
 
     }
 
@@ -235,7 +237,7 @@ const FilterItemCategoryModal = ({ navigatetoproduct, showFilterModal, toggleFil
                                 showsHorizontalScrollIndicator={true}
                                 data={filterListData}
                                 extraData={refreshValue}
-                                keyExtractor={item => item.id}
+                                keyExtractor={item => item.name}
                                 renderItem={renderItemsFilter}
                                 contentContainerStyle={styles.productList}
                             />

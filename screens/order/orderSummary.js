@@ -62,9 +62,11 @@ const OrderSummary = ({ navigation, route }) => {
                 <View style={styles.container}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, marginVertical: hp('1%'), marginTop: hp('1.5%') }}>
                         <Text>SENDER INFORMATION</Text>
-                        <View style={{ backgroundColor: '#fff', paddingHorizontal: 5, paddingVertical: 5 }}>
-                            <Text style={{ color: 'blue' }}>Change</Text>
-                        </View>
+                        <TouchableWithoutFeedback onPress={() => navigation.pop()}>
+                            <View style={{ backgroundColor: '#fff', paddingHorizontal: 5, paddingVertical: 5 }}>
+                                <Text style={{ color: 'blue' }}>Change</Text>
+                            </View>
+                        </TouchableWithoutFeedback>
                     </View>
 
 

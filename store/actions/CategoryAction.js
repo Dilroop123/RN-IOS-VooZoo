@@ -12,6 +12,8 @@ export const UPDATE_ITEMCATEGORY = 'UPDATE_ITEMCATEGORY';
 export const SET_PRODUCT = 'SET_PRODUCT';
 export const REMOVE_FROM_SUBCATEGORY = 'REMOVE_FROM_SUBCATEGORY';
 export const SET_HOME_ITEM_CATEGORY = 'SET_HOME_ITEM_CATEGORY';
+export const SET_FILTER_PRODUCT = 'SET_FILTER_PRODUCT';
+export const REMOVE_FROM_FILTER_PRODUCTLIST = 'REMOVE_FROM_FILTER_PRODUCTLIST';
 
 
 export const fetchSliderImages = () => {
@@ -172,7 +174,9 @@ export const clearProduct = () => {
   return { type: REMOVE_FROM_PRODUCTLIST, pid: 'productId' };
 };
 
-
+export const clearFilterProduct = () => {
+  return { type: REMOVE_FROM_FILTER_PRODUCTLIST, pid: 'productId' };
+};
 
 export const WhisListItemCategory = (id, value) => {
 
@@ -228,7 +232,7 @@ export const fetchProduct = (catId, subCatId, itemId) => {
   };
 };
 
-export const fetchFilterProduct = (filter) => {
+export const fetchFilterProduct = (filter, itemCategoryId) => {
   return async dispatch => {
 
     const response = await fetch(baseUrl.url + 'api/v1/product/filter', {
@@ -237,14 +241,15 @@ export const fetchFilterProduct = (filter) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        filter
+        filter,
+        itemCategoryId
       })
     });
 
     const resData = await response.json();
 
     dispatch({
-      type: SET_PRODUCT, productData: resData
+      type: SET_FILTER_PRODUCT, filterdata: resData
 
     });
   };

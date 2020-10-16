@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import * as CategoryAction from '../../store/actions/CategoryAction';
-import FilterItemCategoryModal from './FilterItemCategoryModal';
+
 
 
 
@@ -115,36 +115,20 @@ const ItemCategory = ({ navigation, route }) => {
 
   const navigateToScreen = (id, name, addOnPrice, gstPercent, voozooProfit, discount, cod) => {
 
-    navigation.navigate('ProductList', { catId, subCatId, itemCatId: id, screenTitle: name, addOnPrice, gstPercent, voozooProfit, discount, cod });
+    navigation.navigate('ProductList', { catId, subCatId, itemCatId: id, screenTitle: name, addOnPrice, gstPercent, voozooProfit, discount, cod, filterList });
   }
 
-  const navigatetoproduct = () => {
-    navigation.navigate('ProductList', { catId: undefined, subCatId: undefined, itemCatId: undefined, screenTitle: 'name', addOnPrice: undefined, gstPercent: undefined, voozooProfit: undefined, discount: undefined, cod: undefined });
-  }
+
 
   return (
 
     <View style={styles.container}>
 
-      <View style={styles.catalogContainer}>
-        <Text style={styles.textseacrh}>Showing All Catalogs</Text>
-        <TouchableWithoutFeedback onPress={() => setShowFilterModal(!showFilterModal)}>
-          <View style={{ flexDirection: 'row' }}>
-            <Icon name="filter" size={18} color={color.blue} />
-            {/*           
-              <Badge containerStyle={{ position: 'absolute', top: -9, right: -5, zIndex: 1 }} value='1' status="error" /> */}
-
-
-
-            <Text style={{ color: color.blue, marginLeft: 5 }}>FILTERS</Text>
-          </View>
-        </TouchableWithoutFeedback>
-      </View>
 
 
 
       <ItemCategoryList navigateTo={navigateToScreen} itemCatData={TotalItemCategory} />
-      <FilterItemCategoryModal navigatetoproduct={navigatetoproduct} filterList={filterList} showFilterModal={showFilterModal} toggleFilterModal={toggleFilterModal} />
+
 
     </View>
 

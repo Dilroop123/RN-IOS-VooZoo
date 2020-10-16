@@ -71,9 +71,10 @@ const Home = ({ navigation }) => {
     navigation.navigate('SubCategory', { catId: id, headerimage, screenTitle: name });
   }
 
-  const navigateTo = (catId, subCatId, id, name, addOnPrice, gstPercent, voozooProfit, discount, cod) => {
+  const navigateTo = (catId, subCatId, id, name, addOnPrice, gstPercent, voozooProfit, discount, cod, filterList) => {
 
-    navigation.navigate('ProductList', { catId, subCatId, itemCatId: id, screenTitle: name, addOnPrice, gstPercent, voozooProfit, discount, cod });
+
+    navigation.navigate('ProductList', { catId, subCatId, itemCatId: id, screenTitle: name, addOnPrice, gstPercent, voozooProfit, discount, cod, filterList });
   }
 
 

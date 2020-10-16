@@ -13,7 +13,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 const ShopingList = React.memo(({ navigation, navigateTo, catdata }) => {
 
 
-    console.log(catdata[0])
+
 
 
 
