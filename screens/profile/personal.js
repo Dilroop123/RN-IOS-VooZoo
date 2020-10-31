@@ -4,6 +4,8 @@ import React, { useEffect, useRef, useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, Text, Button, KeyboardAvoidingView, TextInput, ScrollView, TouchableWithoutFeedback } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import color from '../../style/color';
+import SimplerDatePicker from '@cawfree/react-native-simpler-date-picker';
+
 import { Input } from 'react-native-elements';
 import * as UsserAction from '../../store/actions/UserAction';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -91,7 +93,9 @@ const Personal = ({ navigation }) => {
                     </View>
                 </TouchableWithoutFeedback>
             </View>
-            <View style={{ marginTop: hp('3%'), marginHorizontal: wp('4%') }}>
+
+
+            {/* <View style={{ marginTop: hp('3%'), marginHorizontal: wp('4%') }}>
                 <Text style={{ fontWeight: 'bold', color: 'gray', fontSize: 16 }}> Select Gender</Text>
                 <ModalSelector
                     data={data}
@@ -110,7 +114,7 @@ const Personal = ({ navigation }) => {
 
                 </ModalSelector>
 
-            </View>
+            </View> */}
 
 
 

@@ -48,14 +48,16 @@ const ProductSizeFilter = ({ navigation, route, toggleModal, showSize, item, cat
 
     }
 
+
+
+
     var NormalPrice = 0;
     var VooZooProfit = (catdataobj.voozooProfit / 100) * item.productPrice;
     VooZooProfit = item.productPrice + VooZooProfit;
-    var discountper = (catdataobj.discount / 100) * VooZooProfit;
-    discountper = VooZooProfit - discountper;
-    NormalPrice = NormalPrice + Math.round(discountper);
-
-
+    var VooZooProfit2 = (catdataobj.voozooProfit / 100) * item.productPrice;
+    var gstPercent = (catdataobj.gstPercent / 100) * VooZooProfit2;
+    gstPercent = VooZooProfit + gstPercent;
+    NormalPrice = NormalPrice + Math.round(gstPercent);
 
     const dispatch = useDispatch();
 

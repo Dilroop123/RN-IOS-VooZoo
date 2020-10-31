@@ -254,7 +254,7 @@ const ProductList = ({ navigation, route }) => {
 
 
 
-                {reviewCategory.reviewCount != undefined && reviewCategory.reviewCount && filterproducts.products > 0 ?
+                {reviewCategory.reviewCount != undefined || filterproducts.products > 0 ?
                     <View>
                         <ProductCatalogReviews reviewCategory={reviewCategory} />
                         <TouchableWithoutFeedback onPress={() => { navigation.navigate('AllCatalogReviews', { itemcategory: itemCatId, productId: 'false' }) }}>

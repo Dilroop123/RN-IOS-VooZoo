@@ -18,6 +18,7 @@ import ItemCategoryImages from '../ItemCategory/ItemCategoryImages';
 import ItemBasicDetails from '../ItemCategory/ItemBasicDetails';
 import { Card, ListItem } from 'react-native-elements'
 import FilterDataList from './FilterDataList';
+import Loader from '../../components/Loader';
 
 
 const wait = (timeout) => {
@@ -37,7 +38,7 @@ const Home = ({ navigation }) => {
 
   const [refreshing, setRefreshing] = useState(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
-
+  const [loader, setLoader] = useState(false);
 
   const toggleFilterModal = () => {
     setShowFilterModal(!showFilterModal);
@@ -49,10 +50,12 @@ const Home = ({ navigation }) => {
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
+      setLoader(true)
       dispatch(CartAction.setBatchIcon(userdata.userData._id))
       dispatch(CategoryAction.fetchCategory())
       dispatch(CategoryAction.fetchSliderImages())
       dispatch(CategoryAction.fetchHomeLatestItemCategory())
+      setLoader(false)
     });
 
 

@@ -62,9 +62,9 @@ const AddressList = ({ navigation, naviagteToScreen }) => {
                     </TouchableWithoutFeedback>
                 </View>
                 <View style={{ flexDirection: 'column', marginLeft: 20 }}>
-                    <Text>{item.CustomerName}</Text>
-                    <Text>{item.PhoneNumber}</Text>
-                    <Text style={{ fontWeight: 'bold' }}>{`${item.HouseNumber} ${item.Street}`}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>{item.CustomerName}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>{item.PhoneNumber}</Text>
+                    <Text>{`${item.HouseNumber} ${item.Street}`}</Text>
                     <Text>{`${item.City} ${item.State} ${item.PinCode}`}</Text>
                     <Text>Near To {item.LandMark}</Text>
                 </View>

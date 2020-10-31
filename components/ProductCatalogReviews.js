@@ -22,15 +22,18 @@ const ProductCatalogReviews = ({ reviewCategory }) => {
     var percentPoor = (reviewCategory.PoorCount / 100) * reviewCategory.ratingCount;
 
 
-
-
     const renderItems = useCallback(
         ({ item }) => (
 
             <View>
                 <View style={{ borderBottomColor: color.gray, borderBottomWidth: 1, marginBottom: hp('2%'), marginRight: wp('5%') }} />
+                {item.userId.fullName == "" ?
 
-                <Text style={{ fontSize: 12 }}>{item.userId.fullName}</Text>
+                    <Text style={{ fontSize: 12 }}>VooZoo User</Text>
+                    :
+                    <Text style={{ fontSize: 12 }}>{item.userId.fullName}</Text>
+                }
+
 
                 <AirbnbRating
                     count={5}

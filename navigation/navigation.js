@@ -111,11 +111,11 @@ function MyTopTabs() {
         component={Contact}
         options={{ tabBarLabel: 'Contact' }}
       />
-      <TabTop.Screen
+      {/* <TabTop.Screen
         name="Personal"
         component={Personal}
         options={{ tabBarLabel: 'Personal' }}
-      />
+      /> */}
 
     </TabTop.Navigator>
   );

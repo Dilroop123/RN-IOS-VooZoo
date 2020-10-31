@@ -16,6 +16,10 @@ const ProfileBar = ({ navigation, naviagteToScreen }) => {
       <View style={styles.container}>
         <View style={{ height: hp('8%'), width: wp('14.2%') }}>
           <Image style={{ height: '100%', width: '100%' }} source={require('../../assets/person.png')} />
+          <View>
+
+          </View>
+
         </View>
         <View style={{ flexDirection: 'column', marginLeft: wp('10%') }}>
           {userdata.userData.fullName != '' ?

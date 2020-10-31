@@ -37,10 +37,10 @@ const AddReview = ({ navigation, route }) => {
     const SubmitReview = () => {
 
 
-        if ((reviewTextArea != '' || reviewTextArea != undefined) && (uploadImagesServer.length == 0)) {
+        if (reviewTextArea == '' || reviewTextArea == undefined) {
             Alert.alert(
                 "VooZoo",
-                "Please Upload Image first then You can  add the reason for rating",
+                "Please write the review , we dont accept blank reviews",
                 [
 
                     { text: "OK", onPress: () => console.log("OK Pressed") }

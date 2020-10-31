@@ -7,6 +7,7 @@ import RNOtpVerify from 'react-native-otp-verify';
 import * as UserAction from '../../store/actions/UserAction';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useSelector, useDispatch } from 'react-redux';
+import { Input } from 'react-native-elements';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -17,7 +18,7 @@ const Gender = React.memo(({ navigation }) => {
 
     const [male, setMale] = useState(false);
     const [female, setFemale] = useState(false);
-
+    const [Fullname, setFullName] = useState();
 
 
     useEffect(() => {
@@ -65,7 +66,7 @@ const Gender = React.memo(({ navigation }) => {
             gendervalue = 'Male'
         }
 
-        dispatch(UserAction.updateUserGender(userdata.userData._id, gendervalue, userdata.userData.mobile))
+        dispatch(UserAction.updateUserGender(userdata.userData._id, gendervalue, userdata.userData.mobile, Fullname))
         navigation.replace('BottomTabs');
     }
 
@@ -80,6 +81,15 @@ const Gender = React.memo(({ navigation }) => {
                         <Image style={styles.imagelogo} source={require('../../assets/logoaa.jpg')} />
 
                     </View>
+                </View>
+                <View style={{ marginTop: hp('4%') }}>
+                    <Input value={Fullname}
+
+
+                        inputContainerStyle={styles.inputstyle}
+                        containerStyle={styles.textinput}
+                        onChangeText={value => setFullName(value)}
+                        label="Full Name" />
                 </View>
                 <View style={{ marginTop: hp('2%') }}>
                     <Text style={styles.textgender}>what is your Gender?</Text>
@@ -157,6 +167,12 @@ const styles = StyleSheet.create({
     imageviewholder: {
         height: 50,
         width: 50
+    },
+    textinput: {
+        height: 70
+    },
+    inputstyle: {
+        height: 35
     },
     textgender: {
         fontSize: 20,

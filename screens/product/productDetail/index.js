@@ -33,7 +33,6 @@ const ProductDetail = ({ navigation, route }) => {
     const batchicon = useSelector(state => state.cart.BatchIcon);
 
 
-
     const { item } = route.params;
     const { catdataobj } = route.params;
 
@@ -219,21 +218,44 @@ const ProductDetail = ({ navigation, route }) => {
             </ScrollView>
 
             <View style={styles.customButton}>
-                <View style={{ flexDirection: 'row' }}>
-                    <TouchableWithoutFeedback onPress={() => showSizeFilter()}>
-                        <View style={{ borderWidth: 1, borderColor: color.blue, flexDirection: 'row', paddingVertical: hp('1.2%'), flex: 1, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center' }}>
-                            <Icon name="cart-outline" size={20} color={color.blue} />
-                            <Text style={{ color: color.blue, marginLeft: wp('1.5%') }}>ADD TO CART</Text>
-                        </View>
-                    </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback onPress={() => navigation.navigate('Cart')}>
-                        <View style={{ flexDirection: 'row', paddingVertical: hp('1.2%'), flex: 1, backgroundColor: color.blue, alignItems: 'center', justifyContent: 'center' }}>
-                            <Icon name="share-variant" size={20} color='#fff' />
-                            <Text style={{ color: '#fff', marginLeft: wp('1.5%') }}>CHECK OUT</Text>
+                {batchicon == 0 ?
+                    <View style={{ flexDirection: 'row' }}>
+                        <TouchableWithoutFeedback onPress={() => showSizeFilter()}>
+                            <View style={{ borderWidth: 1, borderColor: color.blue, flexDirection: 'row', paddingVertical: hp('1.2%'), flex: 1, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center' }}>
+                                <Icon name="cart-outline" size={20} color={color.blue} />
+                                <Text style={{ color: color.blue, marginLeft: wp('1.5%') }}>ADD TO CART</Text>
+                            </View>
+                        </TouchableWithoutFeedback>
+                        <TouchableWithoutFeedback onPress={() => toogleShareModal(item.productimages, item.description, item.itemCategoryId)}>
+                            <View style={{ flexDirection: 'row', paddingVertical: hp('1.2%'), flex: 1, backgroundColor: color.blue, alignItems: 'center', justifyContent: 'center' }}>
+                                <Icon name="share-variant" size={20} color='#fff' />
+                                <Text style={{ color: '#fff', marginLeft: wp('1.5%') }}>SHARE NOW</Text>
 
-                        </View>
-                    </TouchableWithoutFeedback>
-                </View>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    </View>
+
+                    :
+                    <View style={{ flexDirection: 'row' }}>
+                        <TouchableWithoutFeedback onPress={() => showSizeFilter()}>
+                            <View style={{ borderWidth: 1, borderColor: color.blue, flexDirection: 'row', paddingVertical: hp('1.2%'), flex: 1, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center' }}>
+                                <Icon name="cart-outline" size={20} color={color.blue} />
+                                <Text style={{ color: color.blue, marginLeft: wp('1.5%') }}>ADD ANOTHER</Text>
+                            </View>
+                        </TouchableWithoutFeedback>
+                        <TouchableWithoutFeedback onPress={() => navigation.navigate('Cart')}>
+                            <View style={{ flexDirection: 'row', paddingVertical: hp('1.2%'), flex: 1, backgroundColor: color.blue, alignItems: 'center', justifyContent: 'center' }}>
+
+                                <Text style={{ color: '#fff', marginLeft: wp('1.5%') }}>CHECKOUT</Text>
+
+                            </View>
+                        </TouchableWithoutFeedback>
+                    </View>
+
+                }
+
+
+
 
             </View>
 

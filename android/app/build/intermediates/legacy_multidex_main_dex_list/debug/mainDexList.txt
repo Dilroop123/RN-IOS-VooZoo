@@ -301,8 +301,6 @@ com/google/auto/value/AutoValue.class
 com/google/auto/value/extension/memoized/Memoized.class
 com/google/firebase/annotations/PublicApi.class
 com/google/firebase/iid/FirebaseInstanceId.class
-com/google/firebase/iid/MessengerIpcClient$RequestFailedException$ErrorCode.class
-com/google/firebase/iid/MessengerIpcClient$What.class
 com/google/firebase/messaging/Constants$FirelogAnalytics$EventType.class
 com/google/firebase/messaging/Constants$FirelogAnalytics$MessageType.class
 com/google/firebase/messaging/Constants$ScionAnalytics$MessageType.class

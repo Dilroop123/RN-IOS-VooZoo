@@ -12,6 +12,7 @@ import baseUrl from '../../constants/baseUrl';
 import * as CategoryAction from '../../store/actions/CategoryAction';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import Loader from '../../components/Loader';
 const wait = (timeout) => {
     return new Promise(resolve => {
         setTimeout(resolve, timeout);
@@ -27,7 +28,7 @@ const SubCategory = ({ navigation, route }) => {
     const TotalSubCategory = useSelector(state => state.category.SubCategoryData);
     const batchicon = useSelector(state => state.cart.BatchIcon);
 
-
+    const [loader, setLoader] = useState(false);
     const [refreshing, setRefreshing] = useState(false);
 
 
@@ -77,7 +78,9 @@ const SubCategory = ({ navigation, route }) => {
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
-            dispatch(CategoryAction.fetchSubCategory(catId))
+            // setLoader(true);
+            dispatch(CategoryAction.fetchSubCategory(catId));
+            // setLoader(false);
         });
 
 
@@ -108,6 +111,8 @@ const SubCategory = ({ navigation, route }) => {
                 <Image style={{ height: '100%', width: '100%' }} source={{ uri: baseUrl.url + 'api/download?privateUrl=' + headerimage }} />
             </View>
             {/*SHOPING LIST */}
+            {/* <Loader loader={loader} /> */}
+
             <SubCategoryList subCatData={TotalSubCategory} navigateTo={navigateToScreen} />
 
         </View>

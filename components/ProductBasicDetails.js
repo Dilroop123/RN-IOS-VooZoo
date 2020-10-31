@@ -12,8 +12,10 @@ const ProductBasicDetails = React.memo(({ navigation, route, item, catdataobj })
 
 
     var totalAddOnPrice = 0;
-    var addOnPrice = (catdataobj.addOnPrice / 100) * item.productPrice;
-    addOnPrice = item.productPrice + addOnPrice;
+    var VooZooProfit1 = (catdataobj.voozooProfit / 100) * item.productPrice;
+    VooZooProfit1 = item.productPrice + VooZooProfit1;
+    var addOnPrice = (catdataobj.addOnPrice / 100) * VooZooProfit1;
+    addOnPrice = VooZooProfit1 + addOnPrice;
     var gstPercent = (catdataobj.gstPercent / 100) * addOnPrice;
     gstPercent = addOnPrice + gstPercent;
     totalAddOnPrice = totalAddOnPrice + Math.round(gstPercent);
@@ -23,14 +25,14 @@ const ProductBasicDetails = React.memo(({ navigation, route, item, catdataobj })
     var NormalPrice = 0;
     var VooZooProfit = (catdataobj.voozooProfit / 100) * item.productPrice;
     VooZooProfit = item.productPrice + VooZooProfit;
-    var discountper = (catdataobj.discount / 100) * VooZooProfit;
-    discountper = VooZooProfit - discountper;
-    NormalPrice = NormalPrice + Math.round(discountper);
+    var VooZooProfit2 = (catdataobj.voozooProfit / 100) * item.productPrice;
+    var gstPercent = (catdataobj.gstPercent / 100) * VooZooProfit2;
+    gstPercent = VooZooProfit + gstPercent;
+    NormalPrice = NormalPrice + Math.round(gstPercent);
 
     var itemOff = 0;
     var totalpercentOff = (totalAddOnPrice - NormalPrice) / totalAddOnPrice * 100;
     itemOff = itemOff + Math.round(totalpercentOff);
-
 
 
 
@@ -49,8 +51,8 @@ const ProductBasicDetails = React.memo(({ navigation, route, item, catdataobj })
                 <View style={{ marginTop: hp('1%'), paddingVertical: hp('0.2%'), paddingHorizontal: wp('1%'), backgroundColor: '#ffe3fb', width: wp('38%'), flexDirection: 'row', alignItems: 'center' }} >
                     <Icon name='dump-truck' type='MaterialCommunityIcons' size={20} color={color.pink} />
                     <View style={{ marginLeft: wp('2%') }}>
-                        {catdataobj.cod ? <Text style={{ color: color.pink, fontSize: 11 }}>COD AVALIABLE</Text> :
-                            <Text style={{ color: color.pink, fontSize: 11 }}>COD NOT AVALIABLE</Text>
+                        {catdataobj.cod ? <Text style={{ color: color.pink, fontSize: 11 }}>COD AVAILABLE</Text> :
+                            <Text style={{ color: color.pink, fontSize: 11 }}>COD NOT AVAILABLE</Text>
                         }
 
                     </View>

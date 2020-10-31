@@ -4,18 +4,22 @@ import React, { useEffect, useRef, useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, Text, KeyboardAvoidingView, TextInput, ScrollView, TouchableWithoutFeedback } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import color from '../../style/color';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import { Input } from 'react-native-elements';
 import * as UsserAction from '../../store/actions/UserAction';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-
+import moment from 'moment';
 
 
 const Contact = ({ navigation }) => {
     const userdata = useSelector(state => state.user.UserData);
     const dispatch = useDispatch();
 
-
+    const [show, setShow] = useState(false);
+    const [mode, setMode] = useState('date');
+    const [date, setDate] = useState(new Date());
+    const [selctedDate, setSelectedDate] = useState(userdata.userData.dateOfBirth);
     const [Fullname, setFullName] = useState(userdata.userData.fullName);
     const [Mobile, setMobile] = useState(userdata.userData.mobile);
     const [Email, setEmail] = useState(userdata.userData.email);
@@ -35,9 +39,26 @@ const Contact = ({ navigation }) => {
     const ref_city = useRef();
     const ref_state = useRef();
 
+
+    const onChange = (event, selectedDate) => {
+        const currentDate = selectedDate || date;
+
+        const temp = moment(currentDate).format('YYYY-MM-DD')
+
+
+        setShow(Platform.OS === 'ios');
+        setDate(currentDate);
+        setSelectedDate(temp);
+    };
+
+    const showMode = () => {
+        setShow(true);
+        setMode('date');
+    };
+
     const addAddress = () => {
 
-        dispatch(UsserAction.updateUserContact(userdata.userData._id, Fullname, Mobile, Email, Pincode, address1, address2, City, State));
+        dispatch(UsserAction.updateUserContact(userdata.userData._id, Fullname, Mobile, Email, Pincode, address1, address2, City, State, selctedDate));
 
 
         navigation.pop();
@@ -64,6 +85,30 @@ const Contact = ({ navigation }) => {
                         onChangeText={value => setFullName(value)}
                         label="Full Name" />
 
+                    {show && (
+                        <DateTimePicker
+                            testID="dateTimePicker"
+                            value={date}
+                            mode={mode}
+
+                            is24Hour={true}
+                            display="default"
+                            onChange={onChange}
+                        />
+                    )}
+
+
+                    <View style={{ marginHorizontal: wp('4%'), marginTop: hp('1%') }}>
+                        <Text style={{ fontWeight: 'bold', color: 'gray', fontSize: 16 }}>Date of Birth</Text>
+                        <TouchableWithoutFeedback onPress={showMode} >
+                            <View style={{ borderWidth: 1, borderColor: '#000', paddingVertical: hp('2%'), paddingLeft: 20, marginBottom: hp('2.5%') }}>
+
+                                {selctedDate ? <Text style={{ fontSize: 16, color: 'gray' }}>{selctedDate}</Text> :
+                                    <Text style={{ fontSize: 16, color: 'gray' }}> Select Date</Text>}
+
+                            </View>
+                        </TouchableWithoutFeedback>
+                    </View>
                     <Input value={Mobile}
                         ref={ref_mobile}
                         onSubmitEditing={() => ref_email.current.focus()}

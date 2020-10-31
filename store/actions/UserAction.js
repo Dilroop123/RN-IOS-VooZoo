@@ -77,7 +77,8 @@ export const GenerateOtp = (mobilenumber) => {
 };
 
 
-export const updateUserGender = (id, gendervalue, mobile) => {
+export const updateUserGender = (id, gendervalue, mobile, fullName) => {
+    console.log(fullName);
     return async dispatch => {
 
         const response = await fetch(baseUrl.url + 'api/v1/appusers/update', {
@@ -88,7 +89,8 @@ export const updateUserGender = (id, gendervalue, mobile) => {
             body: JSON.stringify({
                 userID: id,
                 gender: gendervalue,
-                username: 'VooZoo' + mobile
+                username: 'VooZoo' + mobile,
+                fullName
 
 
             })
@@ -106,7 +108,7 @@ export const updateUserGender = (id, gendervalue, mobile) => {
 
 
 
-export const updateUserContact = (userID, fullName, mobile, email, pincode, address1, address2, city, state) => {
+export const updateUserContact = (userID, fullName, mobile, email, pincode, address1, address2, city, state, dateOfBirth) => {
     return async dispatch => {
 
         const response = await fetch(baseUrl.url + 'api/v1/appusers/update', {
@@ -124,7 +126,7 @@ export const updateUserContact = (userID, fullName, mobile, email, pincode, addr
                 address2,
                 city,
                 state,
-
+                dateOfBirth
 
             })
         });

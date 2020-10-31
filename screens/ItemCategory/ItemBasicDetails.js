@@ -10,8 +10,10 @@ const ItemBasicDetails = React.memo(({ item }) => {
 
 
     var totalAddOnPrice = 0;
-    var addOnPrice = (item.addOnPrice / 100) * item.product[0].productPrice;
-    addOnPrice = item.product[0].productPrice + addOnPrice;
+    var VooZooProfit1 = (item.voozooProfit / 100) * item.product[0].productPrice;
+    VooZooProfit1 = item.product[0].productPrice + VooZooProfit1;
+    var addOnPrice = (item.addOnPrice / 100) * VooZooProfit1;
+    addOnPrice = VooZooProfit1 + addOnPrice;
     var gstPercent = (item.gstPercent / 100) * addOnPrice;
     gstPercent = addOnPrice + gstPercent;
     totalAddOnPrice = totalAddOnPrice + Math.round(gstPercent);
@@ -21,9 +23,12 @@ const ItemBasicDetails = React.memo(({ item }) => {
     var NormalPrice = 0;
     var VooZooProfit = (item.voozooProfit / 100) * item.product[0].productPrice;
     VooZooProfit = item.product[0].productPrice + VooZooProfit;
-    var discountper = (item.discount / 100) * VooZooProfit;
-    discountper = VooZooProfit - discountper;
-    NormalPrice = NormalPrice + Math.round(discountper);
+    // var discountper = (item.discount / 100) * VooZooProfit;
+    // discountper = VooZooProfit - discountper;
+    var VooZooProfit2 = (item.voozooProfit / 100) * item.product[0].productPrice;
+    var gstPercent = (item.gstPercent / 100) * VooZooProfit2;
+    gstPercent = VooZooProfit + gstPercent;
+    NormalPrice = NormalPrice + Math.round(gstPercent);
 
     var itemOff = 0;
     var totalpercentOff = (totalAddOnPrice - NormalPrice) / totalAddOnPrice * 100;
